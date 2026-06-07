@@ -1,0 +1,15 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Éditeurs / IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs et fichiers temporaires
+*.log
+*.tmp
+
+# Fichier de configuration local éventuel (mots de passe)
+config.local.php
