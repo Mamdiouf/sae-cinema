@@ -1,0 +1,177 @@
+/* =========================================================
+   Cinémathèque — style éditorial inspiré des sites de cinéma
+   (en-tête sombre, accent jaune, affiches, fond clair)
+   ========================================================= */
+
+:root{
+    --jaune:   #febd02;   /* accent type AlloCiné */
+    --noir:    #1a1a1a;
+    --gris:    #6b6b6b;
+    --gris-cl: #efefef;
+    --bord:    #e3e3e3;
+    --bg:      #f4f4f4;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+    font-family: "Helvetica Neue", Arial, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--noir);
+    line-height:1.45;
+}
+
+a{ color:inherit; text-decoration:none; }
+
+img{ display:block; max-width:100%; }
+
+/* ---------- En-tête sombre ---------- */
+.topbar{
+    background: var(--noir);
+    color:#fff;
+    position:sticky; top:0; z-index:50;
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+}
+.topbar-inner{
+    max-width:1100px; margin:0 auto;
+    display:flex; align-items:center; gap:28px;
+    padding:0 20px; height:60px;
+}
+.logo{
+    font-weight:800; font-size:1.35rem; letter-spacing:-.5px;
+    display:flex; align-items:center; gap:8px;
+}
+.logo b{ background:var(--jaune); color:var(--noir); padding:2px 8px; border-radius:3px; }
+.topbar nav{ display:flex; gap:22px; margin-left:auto; }
+.topbar nav a{
+    font-size:.82rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:.5px; color:#dcdcdc; padding:4px 0;
+    border-bottom:2px solid transparent;
+}
+.topbar nav a:hover{ color:#fff; border-color:var(--jaune); }
+.topbar nav a.cta{
+    background:var(--jaune); color:var(--noir);
+    padding:7px 14px; border-radius:3px; border:none;
+}
+.topbar nav a.cta:hover{ background:#ffcf3a; color:#000; }
+
+/* ---------- Conteneur ---------- */
+.container{ max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
+
+.page-title{
+    font-size:1.5rem; font-weight:800; margin-bottom:4px;
+    border-left:5px solid var(--jaune); padding-left:12px;
+}
+.page-sub{ color:var(--gris); font-size:.9rem; margin:0 0 22px 17px; }
+
+/* ---------- Grille d'affiches ---------- */
+.films-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(170px, 1fr));
+    gap:22px 18px;
+}
+.film-card{ background:transparent; }
+.poster{
+    position:relative;
+    aspect-ratio:2/3;
+    border-radius:6px;
+    overflow:hidden;
+    background:linear-gradient(135deg,#3a3a3a,#1a1a1a);
+    box-shadow:0 3px 10px rgba(0,0,0,.18);
+    display:flex; align-items:flex-end; justify-content:center;
+    transition:transform .18s ease, box-shadow .18s ease;
+}
+.film-card:hover .poster{ transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,.3); }
+.poster img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.poster .fallback{
+    position:relative; z-index:1; color:#fff; font-weight:700;
+    text-align:center; padding:14px; font-size:.95rem;
+}
+.note-badge{
+    position:absolute; top:8px; left:8px; z-index:2;
+    background:var(--jaune); color:#000;
+    font-weight:800; font-size:.78rem;
+    padding:3px 7px; border-radius:3px;
+    display:flex; align-items:center; gap:3px;
+}
+.film-card h3{ font-size:.95rem; margin:9px 0 2px; line-height:1.25; }
+.film-card .by{ color:var(--gris); font-size:.8rem; }
+
+/* ---------- Étoiles ---------- */
+.stars{ color:var(--jaune); letter-spacing:1px; font-size:.95rem; }
+.stars .empty{ color:#cfcfcf; }
+
+/* ---------- Fiche film (hero) ---------- */
+.hero{
+    display:flex; gap:30px;
+    background:#fff; border:1px solid var(--bord);
+    border-radius:8px; padding:26px; box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.hero .poster{ flex:0 0 230px; width:230px; }
+.hero-info{ flex:1; min-width:0; }
+.hero-info h1{ font-size:1.9rem; font-weight:800; line-height:1.1; }
+.hero-info .year{ color:var(--gris); font-weight:400; }
+.pills{ margin:12px 0; display:flex; flex-wrap:wrap; gap:8px; }
+.pill{
+    background:var(--gris-cl); border:1px solid var(--bord);
+    font-size:.78rem; font-weight:600; padding:4px 11px; border-radius:20px;
+}
+.synopsis{ margin:16px 0; color:#333; max-width:62ch; }
+.facts{ display:flex; flex-wrap:wrap; gap:26px; margin:16px 0; }
+.facts .f span{ display:block; color:var(--gris); font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; }
+.facts .f strong{ font-size:1.05rem; }
+
+.section-h{
+    font-size:1.1rem; font-weight:800; margin:30px 0 12px;
+    border-left:5px solid var(--jaune); padding-left:10px;
+}
+
+/* ---------- Casting (vignettes) ---------- */
+.cast-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+.cast-item{ background:#fff; border:1px solid var(--bord); border-radius:6px; padding:10px 12px; }
+.cast-item .name{ font-weight:700; font-size:.9rem; }
+.cast-item .role{ color:var(--gris); font-size:.82rem; }
+
+/* ---------- Tableaux ---------- */
+table{ width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--bord); border-radius:8px; overflow:hidden; }
+th, td{ text-align:left; padding:12px 14px; border-bottom:1px solid var(--bord); }
+th{ background:var(--noir); color:#fff; font-size:.78rem; text-transform:uppercase; letter-spacing:.5px; }
+tr:last-child td{ border-bottom:none; }
+tr:hover td{ background:#fafafa; }
+
+/* ---------- Boutons / liens ---------- */
+.btn{
+    display:inline-block; background:var(--jaune); color:#000;
+    font-weight:700; padding:9px 18px; border-radius:4px; border:none; cursor:pointer;
+}
+.btn:hover{ background:#ffcf3a; }
+.btn-danger{ background:#e23b3b; color:#fff; }
+.btn-danger:hover{ background:#c92f2f; }
+.back{ display:inline-block; color:var(--gris); font-size:.85rem; margin-bottom:14px; }
+.back:hover{ color:var(--noir); }
+
+/* ---------- Formulaire ---------- */
+form.box{ background:#fff; border:1px solid var(--bord); border-radius:8px; padding:26px; max-width:580px; }
+label{ display:block; margin:16px 0 5px; font-weight:600; font-size:.9rem; }
+input, select, textarea{
+    width:100%; padding:10px 12px; border:1px solid var(--bord);
+    border-radius:5px; background:#fff; color:var(--noir); font-size:.95rem;
+}
+input:focus, select:focus, textarea:focus{ outline:2px solid var(--jaune); border-color:var(--jaune); }
+.checks{ display:flex; flex-wrap:wrap; gap:14px; margin-top:8px; }
+.checks label{ display:flex; align-items:center; gap:6px; margin:0; font-weight:400; }
+.checks input{ width:auto; }
+
+/* ---------- Messages ---------- */
+.alert{ padding:12px 16px; border-radius:6px; margin-bottom:18px; font-size:.92rem; }
+.alert.ok{ background:#e7f6ec; color:#1d7a3d; border:1px solid #b6e2c4; }
+.alert.error{ background:#fdeaea; color:#b42626; border:1px solid #f3c4c4; }
+
+/* ---------- Pied de page ---------- */
+.footer{ background:var(--noir); color:#bdbdbd; text-align:center; padding:26px; font-size:.82rem; }
+.footer b{ color:var(--jaune); }
+
+@media (max-width:620px){
+    .hero{ flex-direction:column; }
+    .hero .poster{ width:170px; }
+}
