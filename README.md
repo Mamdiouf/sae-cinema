@@ -70,7 +70,8 @@ sae-cinema/
 
 ## 👥 Auteurs
 
-- *(à compléter avec vos noms)*
+- **Mamadou DIOUF** — mamadou.diouf1@edu.univ-paris13.fr
+- **Yacine FALL** — yacine.fall@edu.univ-paris13.fr
 
 ## 📝 Source des données
 
